@@ -132,6 +132,28 @@
     font-family:var(--mono); font-size:32px; font-weight:600; margin:0;
   }
 
+  /* ---------- Bento Grid ---------- */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    border-top: 1px solid var(--border);
+  }
+  .bento-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bento-card .section-head { margin-bottom: 24px; }
+  .bento-card h2 { font-size: 24px; }
+
   /* ---------- Skills (directory style) ---------- */
   .dir{
     border:1px solid var(--border);
@@ -369,6 +391,10 @@
     .log-entry{grid-template-columns:64px 1fr; gap:16px;}
     .contact-grid{grid-template-columns:1fr;}
     
+    .bento-grid { padding-top: 32px; padding-bottom: 32px; gap: 0; grid-template-columns: 1fr; border-top: none; }
+    .bento-card { padding: 32px 0; border: none; border-radius: 0; border-top: 1px solid var(--border); box-shadow: none; }
+    .bento-card:first-child { border-top: none; padding-top: 0; }
+    
     /* Floating chat on mobile */
     .chat-widget { bottom: 16px; right: 16px; }
     .chat-btn { bottom: 0; right: 0; width: 56px; height: 56px; }
@@ -426,3 +452,27 @@
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important;}
   }
+
+/* ---------- Dark Mode ---------- */
+html.dark {
+  --bg: #111111;
+  --text: #ffffff;
+  --text-soft: #a3a3a3;
+  --border: #333333;
+  --border-strong: #ffffff;
+}
+html.dark ::selection { background: #ffffff; color: #111111; }
+html.dark header { background: rgba(17, 17, 17, 0.9); }
+html.dark .dot { background: #ffffff; }
+html.dark .btn-solid { background: #ffffff; color: #111111; }
+html.dark .btn-solid:hover { background: #e2e2e2; }
+html.dark .btn-outline:hover { background: #ffffff; color: #111111; }
+html.dark .chat-btn, html.dark .chat-indicator { background: #ffffff; color: #111111; }
+html.dark .chat-window { background: #111111; }
+html.dark .term-bar { background: #1a1a1a; }
+html.dark .msg.user { background: #ffffff; color: #111111; border-color: #ffffff; }
+html.dark .msg.user .msg-label { color: #5c5c5c; }
+html.dark .chip:hover { background: #ffffff; color: #111111; }
+html.dark .term-input button:hover { background: #ffffff; color: #111111; }
+html.dark .scroll-top-btn { background: #111111; border-color: var(--border-strong); }
+html.dark .scroll-top-btn:hover { background: #1a1a1a; }

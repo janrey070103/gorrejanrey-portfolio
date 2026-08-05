@@ -3,6 +3,33 @@ import { SKILLS, PROJECTS, EXPERIENCE, QUICK_QUESTIONS, CERTIFICATIONS } from '.
 import { generateReply } from './gemini';
 import './index.css';
 
+import { SiGo, SiLaravel, SiPhp, SiFlask, SiPython, SiMongodb, SiExpress, SiReact, SiNodedotjs, SiFirebase, SiDotnet, SiGit, SiGithub, SiMysql, SiVercel, SiNetlify } from 'react-icons/si';
+import { FaJava, FaCode, FaWindows, FaBrain } from 'react-icons/fa';
+import { TbBrandCSharp } from 'react-icons/tb';
+
+const getIconForSkill = (skill) => {
+  const s = skill.toLowerCase();
+  if (s.includes('golang') || s.includes('go')) return <SiGo className="skill-icon" />;
+  if (s.includes('laravel')) return <SiLaravel className="skill-icon" />;
+  if (s.includes('flask')) return <SiFlask className="skill-icon" />;
+  if (s.includes('mern')) return <SiReact className="skill-icon" />;
+  if (s.includes('mvc')) return <FaCode className="skill-icon" />;
+  if (s.includes('react native')) return <SiReact className="skill-icon" />;
+  if (s.includes('firebase')) return <SiFirebase className="skill-icon" />;
+  if (s.includes('c#')) return <TbBrandCSharp className="skill-icon" />;
+  if (s.includes('.net')) return <SiDotnet className="skill-icon" />;
+  if (s.includes('java swing')) return <FaJava className="skill-icon" />;
+  if (s.includes('winforms')) return <FaWindows className="skill-icon" />;
+  if (s.includes('github')) return <SiGithub className="skill-icon" />;
+  if (s.includes('git') && !s.includes('github')) return <SiGit className="skill-icon" />;
+  if (s.includes('mysql')) return <SiMysql className="skill-icon" />;
+  if (s.includes('vercel')) return <SiVercel className="skill-icon" />;
+  if (s.includes('netlify')) return <SiNetlify className="skill-icon" />;
+  if (s.includes('llm') || s.includes('prompting')) return <FaBrain className="skill-icon" />;
+  return null;
+};
+
+
 function Chat({ isChatOpen, setIsChatOpen }) {
   const [messages, setMessages] = useState([
     { from: "bot", text: "Hi — I'm the AI assistant for Jan Rey's portfolio. Ask me anything about his skills, projects, or experience listed above." },
@@ -108,6 +135,12 @@ function App() {
   const [selectedCert, setSelectedCert] = useState(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+  const [expandedSection, setExpandedSection] = useState(null);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDark);
+  }, [isDark]);
 
   useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 400);
@@ -116,7 +149,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (selectedProject || selectedCert || isChatOpen) {
+    if (selectedProject || selectedCert || isChatOpen || expandedSection) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -124,7 +157,7 @@ function App() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [selectedProject, selectedCert, isChatOpen]);
+  }, [selectedProject, selectedCert, isChatOpen, expandedSection]);
 
   return (
     <React.Fragment>
@@ -133,12 +166,19 @@ function App() {
           <div className="logo" style={{ display: 'flex', alignItems: 'center' }}>
             <img src="images/gorslogo.png" alt="Gors Logo" className="logo-img" />
           </div>
-          <nav className="links">
+          <nav className="links" style={{ display: 'flex', alignItems: 'center' }}>
             <a href="#skills">skills</a>
             <a href="#projects">projects</a>
             <a href="#certifications">certifications</a>
             <a href="#experience">experience</a>
             <a href="#contact">contact</a>
+            <button onClick={() => setIsDark(!isDark)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-soft)', display: 'flex', alignItems: 'center', marginLeft: '12px' }} aria-label="Toggle Dark Mode">
+              {isDark ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              )}
+            </button>
           </nav>
         </div>
       </header>
@@ -164,8 +204,8 @@ function App() {
         </div>
       </div>
 
-      <section id="skills">
-        <div className="wrap">
+      <div className="bento-grid wrap">
+        <div className="bento-card" id="skills">
           <div className="section-head">
             <h2>Skills</h2>
             <span className="section-num">01 / directory listing</span>
@@ -175,21 +215,23 @@ function App() {
               <div className="dir-row" key={s.key}>
                 <div className="dir-key">{s.key}</div>
                 <div className="tag-row">
-                  {s.tags.map((t) => <span className="tag" key={t}>{t}</span>)}
+                  {s.tags.map((t) => (
+                    <span className="tag" key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      {t} {getIconForSkill(t)}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </section>
 
-      <section id="projects">
-        <div className="wrap">
+        <div className="bento-card" id="projects">
           <div className="section-head">
             <h2>Projects</h2>
             <span className="section-num">02 / commit log</span>
           </div>
-          {PROJECTS.map((p) => (
+          {PROJECTS.slice(0, 3).map((p) => (
             <div className="log-entry" key={p.id} onClick={() => setSelectedProject(p)}>
               <div className="log-hash">#{p.id}</div>
               <div>
@@ -199,16 +241,15 @@ function App() {
               </div>
             </div>
           ))}
+          <button className="btn btn-outline" style={{marginTop: 'auto', alignSelf: 'flex-start'}} onClick={() => setExpandedSection('projects')}>See more Projects...</button>
         </div>
-      </section>
 
-      <section id="certifications">
-        <div className="wrap">
+        <div className="bento-card" id="certifications">
           <div className="section-head">
             <h2>Certifications</h2>
             <span className="section-num">03 / credentials</span>
           </div>
-          {CERTIFICATIONS.map((c) => (
+          {CERTIFICATIONS.slice(0, 3).map((c) => (
             <div className="log-entry" key={c.id} onClick={() => setSelectedCert(c)}>
               <div className="cert-logo-badge">
                 <img
@@ -229,11 +270,10 @@ function App() {
               </div>
             </div>
           ))}
+          <button className="btn btn-outline" style={{marginTop: 'auto', alignSelf: 'flex-start'}} onClick={() => setExpandedSection('certifications')}>See more Certifications...</button>
         </div>
-      </section>
 
-      <section id="experience">
-        <div className="wrap">
+        <div className="bento-card" id="experience">
           <div className="section-head">
             <h2>Experience</h2>
             <span className="section-num">04 / timeline</span>
@@ -248,7 +288,7 @@ function App() {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       <section id="contact">
         <div className="wrap">
@@ -290,6 +330,63 @@ function App() {
           <span>© {new Date().getFullYear()} — Jan Rey Gorre</span>
         </div>
       </footer>
+
+      
+
+
+      {expandedSection === 'projects' && (
+        <div className="modal-overlay" onClick={() => setExpandedSection(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setExpandedSection(null)}>×</button>
+            <div className="modal-header">
+              <h2 className="modal-title">All Projects</h2>
+            </div>
+            {PROJECTS.map((p) => (
+              <div className="log-entry" key={p.id} onClick={() => { setSelectedProject(p); }}>
+                <div className="log-hash">#{p.id}</div>
+                <div>
+                  <p className="log-title">{p.title}</p>
+                  <p className="log-desc">{p.desc}</p>
+                  <span className="tag">{p.stack}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {expandedSection === 'certifications' && (
+        <div className="modal-overlay" onClick={() => setExpandedSection(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setExpandedSection(null)}>×</button>
+            <div className="modal-header">
+              <h2 className="modal-title">All Certifications</h2>
+            </div>
+            {CERTIFICATIONS.map((c) => (
+              <div className="log-entry" key={c.id} onClick={() => { setSelectedCert(c); }}>
+                <div className="cert-logo-badge">
+                  <img
+                    src={c.logo}
+                    alt={c.issuer}
+                    className="cert-logo-img"
+                    referrerPolicy="no-referrer"
+                    crossOrigin="anonymous"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = `<span class="cert-logo-text">${c.issuer.split(' ')[0]}</span>`;
+                    }}
+                  />
+                </div>
+                <div>
+                  <p className="log-title">{c.title}</p>
+                  <span className="tag">{c.issuer}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
 
       {showScrollTop && (
         <button 
