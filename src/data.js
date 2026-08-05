@@ -1,8 +1,8 @@
 export const SKILLS = [
-  { key: "web/", tags: ["Current Golang Developer", "Laravel + Vite (PHP)", "Flask (Python)", "MERN Stack", "MVC Architecture"] },
+  { key: "web/", tags: ["Current Golang Developer", "Laravel + Vite (PHP)", "Flask (Python)", "MERN Stack", "MVC Architecture", "JWT"] },
   { key: "mobile/", tags: ["React Native", "Firebase / Firestore"] },
   { key: "desktop/", tags: ["C#", ".NET 8", "Java Swing", "WinForms"] },
-  { key: "tools/", tags: ["Git", "GitHub", "MySQL", "Vercel", "Netlify", "High LLM tools & prompting proficiency"] },
+  { key: "tools/", tags: ["Git", "GitHub", "MySQL", "MongoDB", "Vercel", "Netlify", "Claude", "Codex", "Cursor", "Google Antigravity", "GLM", "High LLM tools & prompting proficiency"] },
 ];
 
 export const PROJECTS = [

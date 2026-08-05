@@ -3,13 +3,13 @@ import { SKILLS, PROJECTS, EXPERIENCE, QUICK_QUESTIONS, CERTIFICATIONS } from '.
 import { generateReply } from './gemini';
 import './index.css';
 
-import { SiGo, SiLaravel, SiPhp, SiFlask, SiPython, SiMongodb, SiExpress, SiReact, SiNodedotjs, SiFirebase, SiDotnet, SiGit, SiGithub, SiMysql, SiVercel, SiNetlify } from 'react-icons/si';
+import { SiGo, SiLaravel, SiPhp, SiFlask, SiPython, SiMongodb, SiExpress, SiReact, SiNodedotjs, SiFirebase, SiDotnet, SiGit, SiGithub, SiMysql, SiVercel, SiNetlify , SiClaude, SiCursor, SiGoogle , SiJsonwebtokens } from 'react-icons/si';
 import { FaJava, FaCode, FaWindows, FaBrain } from 'react-icons/fa';
-import { TbBrandCSharp } from 'react-icons/tb';
+import { TbBrandCSharp, TbLetterZ, TbBrandOpenai } from 'react-icons/tb';
 
 const getIconForSkill = (skill) => {
   const s = skill.toLowerCase();
-  if (s.includes('golang') || s.includes('go')) return <SiGo className="skill-icon" />;
+  if (s.includes('golang')) return <SiGo className="skill-icon" />;
   if (s.includes('laravel')) return <SiLaravel className="skill-icon" />;
   if (s.includes('flask')) return <SiFlask className="skill-icon" />;
   if (s.includes('mern')) return <SiReact className="skill-icon" />;
@@ -26,6 +26,13 @@ const getIconForSkill = (skill) => {
   if (s.includes('vercel')) return <SiVercel className="skill-icon" />;
   if (s.includes('netlify')) return <SiNetlify className="skill-icon" />;
   if (s.includes('llm') || s.includes('prompting')) return <FaBrain className="skill-icon" />;
+  if (s.includes('mongo')) return <SiMongodb className="skill-icon" />;
+  if (s.includes('claude')) return <SiClaude className="skill-icon" />;
+  if (s.includes('codex')) return <TbBrandOpenai className="skill-icon" />;
+  if (s.includes('cursor')) return <SiCursor className="skill-icon" />;
+  if (s.includes('google')) return <SiGoogle className="skill-icon" />;
+  if (s.includes('jwt')) return <SiJsonwebtokens className="skill-icon" />;
+  if (s.includes('z.ai') || s.includes('glm')) return <TbLetterZ className="skill-icon" style={{fontSize: '1.3em'}} />;
   return null;
 };
 
