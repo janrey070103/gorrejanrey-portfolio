@@ -81,7 +81,7 @@ export async function generateReply(userMessage, chatHistory) {
   if (!genAI) {
     genAI = new GoogleGenerativeAI(API_KEY);
     model = genAI.getGenerativeModel({ 
-      model: "gemini-3.6-flash",
+      model: "gemini-flash-lite-latest",
       systemInstruction: SYSTEM_INSTRUCTION 
     });
   }

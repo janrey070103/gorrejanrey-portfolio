@@ -144,6 +144,38 @@ function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [expandedSection, setExpandedSection] = useState(null);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [contactStatus, setContactStatus] = useState("");
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    setContactStatus("Sending...");
+    const formData = new FormData(e.target);
+    
+    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
+    if (!accessKey) {
+      setContactStatus("Error: Missing Web3Forms Access Key");
+      return;
+    }
+    formData.append("access_key", accessKey);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      }).then(r => r.json());
+
+      if (res.success) {
+        setContactStatus("Message sent successfully!");
+        e.target.reset();
+      } else {
+        setContactStatus("Error: " + res.message);
+      }
+    } catch (err) {
+      setContactStatus("Error sending message.");
+    }
+  };
+
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);
@@ -332,6 +364,9 @@ function App() {
             <a href="https://www.linkedin.com/in/jan-rey-gorre-57b7233ba/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text)', display: 'inline-flex', padding: '12px', border: '1px solid var(--border)', borderRadius: '50%', transition: 'background 0.2s' }} onMouseOver={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'} onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
+            <button onClick={() => { setIsContactModalOpen(true); setContactStatus(""); }} style={{ color: 'var(--text)', display: 'inline-flex', padding: '12px', border: '1px solid var(--border)', borderRadius: '50%', background: 'transparent', cursor: 'pointer', transition: 'background 0.2s' }} onMouseOver={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'} onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </button>
           </div>
         </div>
       </section>
@@ -344,6 +379,45 @@ function App() {
 
       
 
+
+      {isContactModalOpen && (
+        <div className="modal-overlay" onClick={() => setIsContactModalOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '500px' }}>
+            <div className="modal-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h3 style={{ margin: 0 }}>Send a Message</h3>
+              <button className="close-btn" onClick={() => setIsContactModalOpen(false)}>✕</button>
+            </div>
+            <div className="modal-body">
+              <form className="contact-form" onSubmit={handleContactSubmit}>
+                <div className="form-group">
+                  <label htmlFor="name">Name</label>
+                  <input type="text" id="name" name="name" className="form-input" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input type="email" id="email" name="email" className="form-input" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="message">Message</label>
+                  <textarea id="message" name="message" className="form-input form-textarea" rows="4" required></textarea>
+                </div>
+                
+                {/* Honeypot Spam Protection */}
+                <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
+                <button type="submit" className="btn btn-solid" style={{ width: '100%', marginTop: '8px' }}>
+                  Send Message
+                </button>
+                {contactStatus && (
+                  <p style={{ marginTop: '12px', fontSize: '0.9rem', color: contactStatus.includes('Error') ? 'red' : 'green' }}>
+                    {contactStatus}
+                  </p>
+                )}
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
 
       {expandedSection === 'projects' && (
         <div className="modal-overlay" onClick={() => setExpandedSection(null)}>

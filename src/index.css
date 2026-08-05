@@ -476,3 +476,36 @@ html.dark .chip:hover { background: #ffffff; color: #111111; }
 html.dark .term-input button:hover { background: #ffffff; color: #111111; }
 html.dark .scroll-top-btn { background: #111111; border-color: var(--border-strong); }
 html.dark .scroll-top-btn:hover { background: #1a1a1a; }
+/* ---------------- Contact Form ---------------- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-group label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.form-input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input:focus {
+  border-color: var(--text-muted);
+}
+.form-textarea {
+  resize: vertical;
+}
