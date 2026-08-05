@@ -33,10 +33,9 @@ ${JSON.stringify(EDUCATION, null, 2)}
 
 CONTACT INFO:
 Email: gorrejanrey@gmail.com
-Outlook: gorre.989552@wnu.sti.edu.ph
 Contact: +63 998 206 6108
 Location: Bacolod City, Philippines
-*Preference: Jan Rey strongly prefers to be contacted via his Gmail (gorrejanrey@gmail.com) or Phone Number, as he rarely uses Outlook.*
+*Preference: Jan Rey prefers to be contacted via his Gmail or Phone Number.*
 ---
 If someone asks something completely unrelated to Jan Rey's work, politely steer the conversation back to his portfolio.
 `;
@@ -109,6 +108,9 @@ export async function generateReply(userMessage, chatHistory) {
     return response.text();
   } catch (error) {
     console.error("Gemini API Error:", error);
+    if (error.message && (error.message.includes("429") || error.message.toLowerCase().includes("quota"))) {
+      return "Oops! I'm receiving too many requests right now and I need to cool down for a minute. Please try asking again shortly!";
+    }
     return `API Error: ${error.message || error.toString()}`;
   }
 }

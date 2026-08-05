@@ -302,8 +302,12 @@ function App() {
               <div className="v">gorrejanrey@gmail.com</div>
             </div>
             <div className="contact-card">
-              <div className="k">OUTLOOK</div>
-              <div className="v">gorre.989552@wnu.sti.edu.ph</div>
+              <div className="k">HIRE ME</div>
+              <div className="v">
+                <a href="RESUME-JAN_REY_GORRE.pdf" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                  View Resume (PDF)
+                </a>
+              </div>
             </div>
             <div className="contact-card">
               <div className="k">CONTACT NUMBER</div>
