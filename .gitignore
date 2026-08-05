@@ -1,0 +1,21 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules
+
+# Production build
+dist
+dist-ssr
+
+# Environment variables (CRITICAL)
+.env
+.env.local
+.env.*.local
+
+# Editor directories and files
+.vscode
+.idea
+.DS_Store
