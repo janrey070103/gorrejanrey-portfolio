@@ -45,7 +45,7 @@ let model = null;
 
 // Rate Limiting Configuration
 const RATE_LIMIT_KEY = 'chat_rate_limit';
-const MAX_REQUESTS = 15; // Max 15 messages
+const MAX_REQUESTS = 5; // Max 5 messages
 const COOLDOWN_HOURS = 2; // Reset every 2 hours
 
 function checkRateLimit() {
