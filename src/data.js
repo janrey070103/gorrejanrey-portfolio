@@ -87,7 +87,7 @@ export const TOPICS = [
   },
   {
     match: ["contact", "email", "reach", "hire"],
-    reply: "Use the contact block below — email or GitHub both work. I usually reply within a day or two.",
+    reply: "Use the contact block below! I highly prefer being contacted via my Gmail (gorrejanrey@gmail.com) or Phone Number because I rarely use Outlook. I usually reply within a day or two.",
   },
   {
     match: ["tool", "git", "database", "deploy"],

@@ -36,6 +36,7 @@ Email: gorrejanrey@gmail.com
 Outlook: gorre.989552@wnu.sti.edu.ph
 Contact: +63 998 206 6108
 Location: Bacolod City, Philippines
+*Preference: Jan Rey strongly prefers to be contacted via his Gmail (gorrejanrey@gmail.com) or Phone Number, as he rarely uses Outlook.*
 ---
 If someone asks something completely unrelated to Jan Rey's work, politely steer the conversation back to his portfolio.
 `;
