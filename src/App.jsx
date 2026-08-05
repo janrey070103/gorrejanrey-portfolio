@@ -280,7 +280,7 @@ function App() {
               </div>
             </div>
           ))}
-          <button className="btn btn-outline" style={{marginTop: 'auto', alignSelf: 'flex-start'}} onClick={() => setExpandedSection('projects')}>See more Projects...</button>
+          <button className="btn btn-outline see-more-btn" onClick={() => setExpandedSection('projects')}>See more Projects...</button>
         </div>
 
         <div className="bento-card" id="certifications">
@@ -309,7 +309,7 @@ function App() {
               </div>
             </div>
           ))}
-          <button className="btn btn-outline" style={{marginTop: 'auto', alignSelf: 'flex-start'}} onClick={() => setExpandedSection('certifications')}>See more Certifications...</button>
+          <button className="btn btn-outline see-more-btn" onClick={() => setExpandedSection('certifications')}>See more Certifications...</button>
         </div>
 
         <div className="bento-card" id="experience">

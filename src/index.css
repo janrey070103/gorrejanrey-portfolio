@@ -159,7 +159,7 @@
     border:1px solid var(--border);
   }
   .dir-row{
-    display:grid; grid-template-columns:180px 1fr;
+    display:grid; grid-template-columns: 80px 1fr; gap: 16px;
     border-bottom:1px solid var(--border);
     padding:18px 20px;
   }
@@ -339,6 +339,12 @@
     margin-top:14px;
   }
 
+  
+  .see-more-btn {
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
   /* ---------- Contact / Footer ---------- */
   .contact-grid{
     display:grid; grid-template-columns:1fr 1fr; gap:24px;
@@ -362,6 +368,9 @@
     .hero .eyebrow { justify-content: center; width: 100%; }
     .hero p.lede { text-align: justify; margin: 0 auto 36px; }
     .hero-actions { justify-content: center; width: 100%; }
+
+    .see-more-btn { align-self: center; margin-top: 32px; }
+
 
     .dir-row{grid-template-columns:1fr; gap:10px;}
     .log-entry{grid-template-columns:64px 1fr; gap:16px;}
