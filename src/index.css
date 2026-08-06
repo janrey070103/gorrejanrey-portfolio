@@ -77,6 +77,7 @@
   }
   .hero-image {
     width: 400px; max-width: 100%; height: auto; 
+    aspect-ratio: 3 / 4; object-fit: cover;
     border-radius: 24px; border: 1px solid var(--border);
     box-shadow: 0 20px 40px rgba(0,0,0,0.08);
   }
@@ -478,6 +479,9 @@ html.dark ::selection { background: #ffffff; color: #111111; }
 html.dark header { background: rgba(17, 17, 17, 0.9); }
 html.dark .dot { background: #ffffff; }
 html.dark .btn-solid { background: #ffffff; color: #111111; }
+html.dark .logo-img { filter: invert(1); }
+html.dark .cert-logo-badge { background: transparent; box-shadow: none; }
+html.dark .cert-logo-img { filter: invert(1) grayscale(100%) contrast(1000%); mix-blend-mode: normal; }
 html.dark .btn-solid:hover { background: #e2e2e2; }
 html.dark .btn-outline:hover { background: #ffffff; color: #111111; }
 html.dark .chat-btn, html.dark .chat-indicator { background: #ffffff; color: #111111; }

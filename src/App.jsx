@@ -236,7 +236,7 @@ function App() {
         </div>
         <div className="hero-image-wrapper">
           <img 
-            src="images/portimage_cropped.png" 
+            src={isDark ? "images/portimage_dark.jpg" : "images/portimage_cropped.png"} 
             alt="Portfolio" 
             className="hero-image"
           />
