@@ -291,20 +291,24 @@ function App() {
             <h2>Projects</h2>
             <span className="section-num">02 / commit log</span>
           </div>
-          {PROJECTS.slice(0, 3).map((p) => (
-            <div className="log-entry" key={p.id} onClick={() => setSelectedProject(p)}>
-              <div className="log-hash">#{p.id}</div>
-              <div>
-                <p className="log-title">{p.title}</p>
-                <p className="log-desc">{p.desc}</p>
-                <div className="tag-row">
-                  {p.stack.split(' · ').map(tech => (
-                    <span className="tag" key={tech}>{tech}</span>
-                  ))}
+                    <div className="projects-bento-grid">
+            {PROJECTS.slice(0, 2).map((p) => (
+              <div className="project-bento-card" key={p.id} onClick={() => setSelectedProject(p)}>
+                <div className="project-thumb">
+                  <img src={p.images[0]} alt={`${p.title} thumbnail`} loading="lazy" />
+                </div>
+                <div className="project-info">
+                  <h3 className="project-title">{p.title}</h3>
+                  <p className="project-desc">{p.desc}</p>
+                  <div className="tag-row">
+                    {p.stack.split(' · ').map(tech => (
+                      <span className="tag" key={tech}>{tech}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
           <button className="btn btn-outline see-more-btn" onClick={() => setExpandedSection('projects')}>See more Projects...</button>
         </div>
 
@@ -451,20 +455,24 @@ function App() {
             <div className="modal-header">
               <h2 className="modal-title">All Projects</h2>
             </div>
-            {PROJECTS.map((p) => (
-              <div className="log-entry" key={p.id} onClick={() => { setSelectedProject(p); }}>
-                <div className="log-hash">#{p.id}</div>
-                <div>
-                  <p className="log-title">{p.title}</p>
-                  <p className="log-desc">{p.desc}</p>
-                  <div className="tag-row">
-                    {p.stack.split(' · ').map(tech => (
-                      <span className="tag" key={tech}>{tech}</span>
-                    ))}
+                        <div className="projects-bento-grid">
+              {PROJECTS.map((p) => (
+                <div className="project-bento-card" key={p.id} onClick={() => { setSelectedProject(p); }}>
+                  <div className="project-thumb">
+                    <img src={p.images[0]} alt={`${p.title} thumbnail`} loading="lazy" />
+                  </div>
+                  <div className="project-info">
+                    <h3 className="project-title">{p.title}</h3>
+                    <p className="project-desc">{p.desc}</p>
+                    <div className="tag-row">
+                      {p.stack.split(' · ').map(tech => (
+                        <span className="tag" key={tech}>{tech}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       )}
@@ -521,11 +529,18 @@ function App() {
             <div className="modal-header">
               <h3 className="modal-title">{selectedProject.title}</h3>
               <p className="modal-desc">{selectedProject.desc}</p>
-              {selectedProject.repo && (
-                <a href={selectedProject.repo} target="_blank" rel="noopener noreferrer" className="modal-link">
-                  {selectedProject.repo.includes('github.com') ? 'View Source Code' : 'View Live Demo'}
-                </a>
-              )}
+              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                {selectedProject.live && (
+                  <a href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="modal-link" style={{ background: '#111', color: '#fff', borderColor: '#111' }}>
+                    View Live Demo
+                  </a>
+                )}
+                {selectedProject.repo && (
+                  <a href={selectedProject.repo} target="_blank" rel="noopener noreferrer" className="modal-link">
+                    View Source Code
+                  </a>
+                )}
+              </div>
             </div>
             {selectedProject.images && selectedProject.images.length > 0 && (
               <div className="modal-gallery">
