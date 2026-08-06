@@ -276,7 +276,11 @@ function App() {
               <div>
                 <p className="log-title">{p.title}</p>
                 <p className="log-desc">{p.desc}</p>
-                <span className="tag">{p.stack}</span>
+                <div className="tag-row">
+                  {p.stack.split(' · ').map(tech => (
+                    <span className="tag" key={tech}>{tech}</span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -432,7 +436,11 @@ function App() {
                 <div>
                   <p className="log-title">{p.title}</p>
                   <p className="log-desc">{p.desc}</p>
-                  <span className="tag">{p.stack}</span>
+                  <div className="tag-row">
+                    {p.stack.split(' · ').map(tech => (
+                      <span className="tag" key={tech}>{tech}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
