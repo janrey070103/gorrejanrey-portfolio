@@ -64,6 +64,22 @@ function Chat({ isChatOpen, setIsChatOpen }) {
     setInput("");
     setTyping(true);
     
+    // Check if it's an FAQ
+    const faqAnswers = {
+      "What are Jan Rey's skills?": "He is currently a Golang developer! He also works across full-stack development with Laravel + PHP, the MERN stack, and Flask/Python, plus mobile with React Native and Firebase. On desktop he builds with C# and .NET.",
+      "Tell me about Jan Rey's projects": "He has built several impressive systems, including G-estudio (a modern web app), Virsprout (a PHP/MySQL donor management system), JBLCF QR-Based Attendance (React/Go), and Edu-Pay Verify (MERN stack). Scroll up to the Projects section to see the full list with screenshots! He is also currently building a web app using React + Gin (Golang) and Random Forest for forecast predictive analytics machine learning.",
+      "What's Jan Rey's experience?": "He has been freelancing as a full-stack developer since 2025, building sites and software for students and small businesses. He also completed a 486-hour IT on-the-job training program in hardware diagnostics and technical support.",
+      "How can I reach Jan Rey?": "You can reach him via email at gorrejanrey@gmail.com, or use the Contact Form at the bottom of the page!"
+    };
+
+    if (faqAnswers[clean]) {
+      setTimeout(() => {
+        setTyping(false);
+        setMessages((m) => [...m, { from: "bot", text: faqAnswers[clean] }]);
+      }, 600); // slight delay for realism
+      return;
+    }
+    
     // Call Gemini API (passing the history BEFORE the new user message)
     const reply = await generateReply(clean, messages);
     
@@ -92,13 +108,13 @@ function Chat({ isChatOpen, setIsChatOpen }) {
       {isChatOpen && (
         <div className="chat-window">
           <div className="terminal">
-            <div className="term-bar" style={{ cursor: 'pointer' }} onClick={() => setIsChatOpen(false)}>
-              <div className="term-dots"><span></span><span></span><span></span></div>
-              <div className="term-title">Jan Rey's assistant — ai.chat</div>
+            <div className="chat-header" style={{ cursor: 'pointer' }} onClick={() => setIsChatOpen(false)}>
+              
+              <div className="chat-title">Jan Rey's assistant — ai.chat</div>
               <div style={{width:"38px", textAlign:'right', fontSize:'16px'}}>✕</div>
             </div>
 
-            <div className="term-body" ref={bodyRef}>
+            <div className="chat-body" ref={bodyRef}>
               {messages.map((m, i) => (
                 <div key={i} className={"msg " + (m.from === "user" ? "user" : "bot")}>
                   <span className="msg-label">{m.from === "user" ? "you" : "assistant"}</span>
@@ -119,14 +135,19 @@ function Chat({ isChatOpen, setIsChatOpen }) {
               ))}
             </div>
 
-            <div className="term-input">
+            <div className="chat-input-area">
               <input
                 placeholder="Type a question..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter") send(input); }}
               />
-              <button onClick={() => send(input)}>send</button>
+              <button onClick={() => send(input)} aria-label="Send" className="send-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
