@@ -762,7 +762,7 @@
     display: none; /* Hide the hint for a cleaner look */
   }
   .see-more-btn {
-    align-self: flex-start;
+    align-self: center;
     margin-top: auto;
   }
 
