@@ -911,6 +911,8 @@ html.dark .chat-btn, html.dark .chat-indicator { background: #ffffff; color: #11
 html.dark .chat-window { background: #111111; }
 html.dark .term-bar { background: #1a1a1a; }
 html.dark .msg.user { background: #ffffff; color: #111111; border-color: #ffffff; }
+html.dark .modal-link { background: #ffffff; color: #111111; }
+html.dark .modal-link:hover { background: #e2e2e2; }
 html.dark .msg.user .msg-label { color: #5c5c5c; }
 html.dark .chip:hover { background: #ffffff; color: #111111; }
 html.dark .term-input button:hover { background: #ffffff; color: #111111; }

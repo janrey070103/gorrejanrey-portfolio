@@ -591,6 +591,13 @@ function App() {
             <div className="modal-header">
               <h3 className="modal-title">{selectedCert.title}</h3>
               <p className="modal-desc">Issued by {selectedCert.issuer}</p>
+              {selectedCert.link && (
+                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '16px' }}>
+                  <a href={selectedCert.link} target="_blank" rel="noopener noreferrer" className="modal-link">
+                    Verify Certificate
+                  </a>
+                </div>
+              )}
             </div>
             <div className="modal-gallery">
               <img src={selectedCert.image} alt={selectedCert.title} loading="lazy" />
