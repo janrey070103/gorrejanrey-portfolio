@@ -43,6 +43,7 @@ export const PROJECTS = [
 export const CERTIFICATIONS = [
   { id: "c-meta1", title: "Introduction to Front-end Development", issuer: "META", image: "images/certifications/IntroductiontoFrontendDevelopment-META.jpg", logo: "/images/certifications/logos/meta.svg" },
   { id: "c-ibm1", title: "Generative AI: Prompt Engineering Basics", issuer: "IBM", image: "images/certifications/PromptEngineeringBasics-IBM.jpg", logo: "/images/certifications/logos/ibm.svg" },
+  { id: "c-google1", title: "Developing a RESTAPI with Go and Cloud Run", issuer: "Google Cloud", image: "images/certifications/googlecloud-developingarestapiwithgoandcloudrun.jpg", logo: "/images/certifications/logos/google-cloud.svg" },
   { id: "c1", title: "OJT 486 Hours", issuer: "CHMSU", image: "images/certifications/COCOJT486Hours-CHMSU.jpe", logo: "/images/certifications/logos/chmsu_black.jpg" },
   { id: "c2", title: "Digital Arts: Creation of Vector Arts", issuer: "STI WNU", image: "images/certifications/DigitalArtsCreationofVectorArts-STIWNU.jpe", logo: "/images/certifications/logos/sti_black.jpg" },
   { id: "c3", title: "From Sketch to Screen", issuer: "STI", image: "images/certifications/FromSketchtoScreen-STI.jpe", logo: "/images/certifications/logos/sti_black.jpg" },
