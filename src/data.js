@@ -1,8 +1,30 @@
 export const SKILLS = [
-  { key: "web/", tags: ["Current Golang Developer", "Laravel + Vite (PHP)", "Flask (Python)", "MERN Stack", "MVC Architecture", "JWT"] },
-  { key: "mobile/", tags: ["React Native", "Firebase / Firestore"] },
-  { key: "desktop/", tags: ["C#", ".NET 8", "Java Swing", "WinForms"] },
-  { key: "tools/", tags: ["Git", "GitHub", "MySQL", "MongoDB", "Vercel", "Netlify", "Claude", "Codex", "Cursor", "Google Antigravity", "GLM", "High LLM tools & prompting proficiency"] },
+  // Development Skills
+  { name: "Current Golang Developer", category: "back-end", card: "Development Skills" },
+  { name: "Laravel + Vite (PHP)", category: "frameworks", card: "Development Skills" },
+  { name: "Flask (Python)", category: "frameworks", card: "Development Skills" },
+  { name: "MERN Stack", category: "frameworks", card: "Development Skills" },
+  { name: "MVC Architecture", category: "back-end", card: "Development Skills" },
+  { name: "JWT", category: "back-end", card: "Development Skills" },
+  { name: "React Native", category: "front-end", card: "Development Skills" },
+  { name: "Firebase / Firestore", category: "databases", card: "Development Skills" },
+  { name: "C#", category: "back-end", card: "Development Skills" },
+  { name: ".NET 8", category: "frameworks", card: "Development Skills" },
+  { name: "Java Swing", category: "front-end", card: "Development Skills" },
+  { name: "WinForms", category: "front-end", card: "Development Skills" },
+  // Tools
+  { name: "Git", category: "tools", card: "Tools" },
+  { name: "GitHub", category: "tools", card: "Tools" },
+  { name: "MySQL", category: "databases", card: "Tools" },
+  { name: "MongoDB", category: "databases", card: "Tools" },
+  { name: "Vercel", category: "tools", card: "Tools" },
+  { name: "Netlify", category: "tools", card: "Tools" },
+  { name: "Claude", category: "ai tools", card: "Tools" },
+  { name: "Codex", category: "ai tools", card: "Tools" },
+  { name: "Cursor", category: "ai tools", card: "Tools" },
+  { name: "Google Antigravity", category: "ai tools", card: "Tools" },
+  { name: "GLM", category: "ai tools", card: "Tools" },
+  { name: "High LLM tools & prompting proficiency", category: "ai tools", card: "Development Skills" }
 ];
 
 export const PROJECTS = [

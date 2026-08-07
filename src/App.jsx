@@ -165,6 +165,14 @@ function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [expandedSection, setExpandedSection] = useState(null);
+  const [skillFilter, setSkillFilter] = useState("All");
+
+  const skillCategories = ["All", "Front-end", "Back-end", "Databases", "Frameworks", "AI Tools", "Tools"];
+  const filteredSkills = SKILLS.filter(s => skillFilter === "All" || s.category.toLowerCase() === skillFilter.toLowerCase());
+  const devSkills = filteredSkills.filter(s => s.card === "Development Skills");
+  const toolSkills = filteredSkills.filter(s => s.card === "Tools");
+  const allDevSkills = SKILLS.filter(s => s.card === "Development Skills");
+  const allToolSkills = SKILLS.filter(s => s.card === "Tools");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [contactStatus, setContactStatus] = useState("");
 
@@ -266,23 +274,54 @@ function App() {
 
       <div className="bento-grid wrap">
         <div className="bento-card" id="skills">
-          <div className="section-head">
+                    <div className="section-head">
             <h2>Skills</h2>
             <span className="section-num">01 / directory listing</span>
           </div>
-          <div className="dir">
-            {SKILLS.map((s) => (
-              <div className="dir-row" key={s.key}>
-                <div className="dir-key">{s.key}</div>
-                <div className="tag-row">
-                  {s.tags.map((t) => (
-                    <span className="tag" key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                      {t} {getIconForSkill(t)}
-                    </span>
-                  ))}
+          
+          <div className="skill-filters">
+            {skillCategories.map(cat => (
+              <button 
+                key={cat}
+                className={`filter-btn ${skillFilter === cat ? 'active' : ''}`}
+                onClick={() => setSkillFilter(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div className="skill-tag-area">
+            {skillFilter === "All" ? (
+              <>
+                <div className="skill-group">
+                  <span className="skill-group-label">Development Skills</span>
+                  <div className="skill-tag-row">
+                    {allDevSkills.map(s => (
+                      <span className="skill-tag" key={s.name}>{s.name} {getIconForSkill(s.name)}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="skill-group-divider" />
+                <div className="skill-group">
+                  <span className="skill-group-label">Tools</span>
+                  <div className="skill-tag-row">
+                    {allToolSkills.map(s => (
+                      <span className="skill-tag" key={s.name}>{s.name} {getIconForSkill(s.name)}</span>
+                    ))}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="skill-group">
+                <span className="skill-group-label">{skillFilter}</span>
+                <div className="skill-tag-row">
+                  {filteredSkills.length > 0 ? filteredSkills.map(s => (
+                    <span className="skill-tag" key={s.name}>{s.name} {getIconForSkill(s.name)}</span>
+                  )) : <span className="skill-tag empty">No matching skills</span>}
                 </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
 
@@ -317,27 +356,22 @@ function App() {
             <h2>Certifications</h2>
             <span className="section-num">03 / credentials</span>
           </div>
-          {CERTIFICATIONS.slice(0, 3).map((c) => (
-            <div className="log-entry" key={c.id} onClick={() => setSelectedCert(c)}>
-              <div className="cert-logo-badge">
-                <img
-                  src={c.logo}
-                  alt={c.issuer}
-                  className="cert-logo-img"
-                  referrerPolicy="no-referrer"
-                  crossOrigin="anonymous"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = `<span class="cert-logo-text">${c.issuer.split(' ')[0]}</span>`;
-                  }}
-                />
+                    <div className="certs-bento-grid">
+            {CERTIFICATIONS.slice(0, 2).map((c) => (
+              <div className="cert-bento-card" key={c.id} onClick={() => setSelectedCert(c)}>
+                <div className="cert-thumb">
+                  <img src={c.image} alt={`${c.title} certificate`} loading="lazy" />
+                  <div className="cert-issuer-logo">
+                    <img src={c.logo} alt={c.issuer} onError={(e) => e.target.style.display='none'} />
+                  </div>
+                </div>
+                <div className="cert-info">
+                  <h3 className="cert-title">{c.title}</h3>
+                  <p className="cert-issuer">{c.issuer}</p>
+                </div>
               </div>
-              <div>
-                <p className="log-title">{c.title}</p>
-                <span className="tag">{c.issuer}</span>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
           <button className="btn btn-outline see-more-btn" onClick={() => setExpandedSection('certifications')}>See more Certifications...</button>
         </div>
 
@@ -484,27 +518,22 @@ function App() {
             <div className="modal-header">
               <h2 className="modal-title">All Certifications</h2>
             </div>
-            {CERTIFICATIONS.map((c) => (
-              <div className="log-entry" key={c.id} onClick={() => { setSelectedCert(c); }}>
-                <div className="cert-logo-badge">
-                  <img
-                    src={c.logo}
-                    alt={c.issuer}
-                    className="cert-logo-img"
-                    referrerPolicy="no-referrer"
-                    crossOrigin="anonymous"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = `<span class="cert-logo-text">${c.issuer.split(' ')[0]}</span>`;
-                    }}
-                  />
+                        <div className="certs-bento-grid">
+              {CERTIFICATIONS.map((c) => (
+                <div className="cert-bento-card" key={c.id} onClick={() => { setSelectedCert(c); }}>
+                  <div className="cert-thumb">
+                    <img src={c.image} alt={`${c.title} certificate`} loading="lazy" />
+                    <div className="cert-issuer-logo">
+                      <img src={c.logo} alt={c.issuer} onError={(e) => e.target.style.display='none'} />
+                    </div>
+                  </div>
+                  <div className="cert-info">
+                    <h3 className="cert-title">{c.title}</h3>
+                    <p className="cert-issuer">{c.issuer}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="log-title">{c.title}</p>
-                  <span className="tag">{c.issuer}</span>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       )}
