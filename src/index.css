@@ -203,7 +203,7 @@
     max-height: 70%;
     object-fit: contain;
     filter: grayscale(100%) contrast(1000%);
-    mix-blend-mode: darken;
+    mix-blend-mode: multiply;
   }
   .cert-logo-text {
     color: #000000;
@@ -524,13 +524,16 @@
   }
   
   html.dark .cert-issuer-logo img {
-    filter: brightness(0) invert(1);
+    filter: invert(1) grayscale(100%) contrast(1000%);
+    mix-blend-mode: screen;
   }
   
   .cert-issuer-logo img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    filter: grayscale(100%) contrast(1000%);
+    mix-blend-mode: multiply;
   }
 
   .cert-info {
@@ -901,7 +904,7 @@ html.dark .dot { background: #ffffff; }
 html.dark .btn-solid { background: #ffffff; color: #111111; }
 html.dark .logo-img { filter: invert(1); }
 html.dark .cert-logo-badge { background: transparent; box-shadow: none; }
-html.dark .cert-logo-img { filter: invert(1) grayscale(100%) contrast(1000%); mix-blend-mode: normal; }
+html.dark .cert-logo-img { filter: invert(1) grayscale(100%) contrast(1000%); mix-blend-mode: screen; }
 html.dark .btn-solid:hover { background: #e2e2e2; }
 html.dark .btn-outline:hover { background: #ffffff; color: #111111; }
 html.dark .chat-btn, html.dark .chat-indicator { background: #ffffff; color: #111111; }

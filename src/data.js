@@ -9,6 +9,7 @@ export const SKILLS = [
   { name: "React Native", category: "front-end", card: "Development Skills" },
   { name: "Firebase / Firestore", category: "databases", card: "Development Skills" },
   { name: "C#", category: "back-end", card: "Development Skills" },
+  { name: "OAuth", category: "back-end", card: "Development Skills" },
   { name: ".NET 8", category: "frameworks", card: "Development Skills" },
   { name: "Java Swing", category: "front-end", card: "Development Skills" },
   { name: "WinForms", category: "front-end", card: "Development Skills" },
