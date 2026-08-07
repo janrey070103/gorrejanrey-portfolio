@@ -3,7 +3,7 @@ import { SKILLS, PROJECTS, EXPERIENCE, QUICK_QUESTIONS, CERTIFICATIONS } from '.
 import { generateReply } from './gemini';
 import './index.css';
 
-import { SiGo, SiLaravel, SiPhp, SiFlask, SiPython, SiMongodb, SiExpress, SiReact, SiNodedotjs, SiFirebase, SiDotnet, SiGit, SiGithub, SiMysql, SiVercel, SiNetlify , SiClaude, SiCursor, SiGoogle , SiJsonwebtokens } from 'react-icons/si';
+import { SiGo, SiLaravel, SiPhp, SiFlask, SiPython, SiMongodb, SiExpress, SiReact, SiNodedotjs, SiFirebase, SiDotnet, SiGit, SiGithub, SiMysql, SiVercel, SiNetlify , SiClaude, SiCursor, SiGoogle , SiJsonwebtokens, SiTailwindcss } from 'react-icons/si';
 import { FaJava, FaCode, FaWindows, FaBrain, FaKey } from 'react-icons/fa';
 import { TbBrandCSharp, TbLetterZ, TbBrandOpenai } from 'react-icons/tb';
 
@@ -33,6 +33,7 @@ const getIconForSkill = (skill) => {
   if (s.includes('google')) return <SiGoogle className="skill-icon" />;
   if (s.includes('jwt')) return <SiJsonwebtokens className="skill-icon" />;
   if (s.includes('oauth')) return <FaKey className="skill-icon" />;
+  if (s.includes('tailwind')) return <SiTailwindcss className="skill-icon" />;
   if (s.includes('z.ai') || s.includes('glm')) return <TbLetterZ className="skill-icon" style={{fontSize: '1.3em'}} />;
   return null;
 };

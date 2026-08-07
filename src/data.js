@@ -13,6 +13,7 @@ export const SKILLS = [
   { name: ".NET 8", category: "frameworks", card: "Development Skills" },
   { name: "Java Swing", category: "front-end", card: "Development Skills" },
   { name: "WinForms", category: "front-end", card: "Development Skills" },
+  { name: "Tailwind CSS", category: "front-end", card: "Development Skills" },
   // Tools
   { name: "Git", category: "tools", card: "Tools" },
   { name: "GitHub", category: "tools", card: "Tools" },
