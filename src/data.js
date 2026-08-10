@@ -14,6 +14,9 @@ export const SKILLS = [
   { name: "Java Swing", category: "front-end", card: "Development Skills" },
   { name: "WinForms", category: "front-end", card: "Development Skills" },
   { name: "Tailwind CSS", category: "front-end", card: "Development Skills" },
+  { name: "Gin (Go)", category: "frameworks", card: "Development Skills" },
+  { name: "Python", category: "back-end", card: "Development Skills" },
+  { name: "Random Forest / ML", category: "back-end", card: "Development Skills" },
   // Tools
   { name: "Git", category: "tools", card: "Tools" },
   { name: "GitHub", category: "tools", card: "Tools" },
@@ -32,6 +35,7 @@ export const SKILLS = [
 export const PROJECTS = [
   { id: "1a8b3f", title: "G-estudio", desc: "A modern web application custom-built for client requirements.", stack: "Web · JavaScript · UI/UX", repo: "https://github.com/janrey070103/g-estudio", live: "https://g-estudio.vercel.app/", images: ["images/system-images/g-estudio/studio.png"] },
   { id: "a1f92c", title: "Virsprout", desc: "A PHP-based system for tracking donors, contributions, and outreach for a nonprofit organization.", stack: "PHP · MySQL · Google OAuth", repo: "https://github.com/janrey070103/virsprout_v2", live: "https://virsprout.infinityfreeapp.com/", images: ["images/system-images/Virsprout/admin-dashboard.png", "images/system-images/Virsprout/donation-management.png", "images/system-images/Virsprout/homepage.png", "images/system-images/Virsprout/landing-page.png", "images/system-images/Virsprout/login.png", "images/system-images/Virsprout/volunteer_management.png"] },
+  { id: "f3a901", title: "ValueAuto", desc: "An AI-powered car price prediction system estimates vehicle values using a machine-learning model and web-based user workflows.", stack: "Gin · Python · Random Forest", repo: "https://github.com/janrey070103/ValueAuto-first-machine-learning-project-", images: ["images/system-images/CarPricePrediction/LandingPage.png", "images/system-images/CarPricePrediction/Carcomparisons.png", "images/system-images/CarPricePrediction/aimodelmetrics.png", "images/system-images/CarPricePrediction/analyticsdashboard.png", "images/system-images/CarPricePrediction/cardepreciation.png", "images/system-images/CarPricePrediction/marketpriceanalysis.png"] },
   { id: "7bd410", title: "JBLCF QR-Based Attendance", desc: "Attendance tracking with JWT/bcrypt auth, role-based access control, and validated photo uploads.", stack: "React · Go · JWT", repo: "https://github.com/janrey070103/JBLCF-B", images: ["images/system-images/Jblcf/admin_dashboard.png", "images/system-images/Jblcf/classes.png", "images/system-images/Jblcf/login.png", "images/system-images/Jblcf/qr_generate.png", "images/system-images/Jblcf/qr_scan.png"] },
   { id: "e2c885", title: "Edu-Pay Verify", desc: "A verification tool for education-related payments, with a separate client and server for auditability.", stack: "MongoDB · Express · React · Node", repo: "https://github.com/janrey070103/edupay-verify", images: ["images/system-images/Edu-Pay/dashboard.png", "images/system-images/Edu-Pay/digital_exam_permit.png", "images/system-images/Edu-Pay/exam_schedule.png", "images/system-images/Edu-Pay/reports.png", "images/system-images/Edu-Pay/upload_receipt.png"] },
   { id: "0f5a3e", title: "CHMSU Task Management", desc: "Scheduling, requests, and real-time notifications for a small organization's internal workflow.", stack: "Laravel · Tailwind", repo: "https://github.com/janrey070103/CHMSU_SYSTEM", images: ["images/system-images/ChmsuSystem/dashboard.png", "images/system-images/ChmsuSystem/login.png", "images/system-images/ChmsuSystem/requests.png", "images/system-images/ChmsuSystem/submit-request.png", "images/system-images/ChmsuSystem/tasks.png"] },
@@ -101,11 +105,11 @@ export const EDUCATION = [
 export const TOPICS = [
   {
     match: ["skill", "tech", "stack", "language", "know"],
-    reply: "I am currently a Golang developer! I also work across full-stack development with Laravel + PHP, the MERN stack, and Flask/Python, plus mobile with React Native and Firebase. On desktop I build with C# and .NET.",
+    reply: "I am currently a Golang developer! I also work across full-stack development with Laravel + PHP, the MERN stack, and Flask/Python, plus mobile with React Native and Firebase. On desktop I build with C# and .NET. I also have experience with machine learning using Python and Random Forest models, and I use Gin as my Go web framework.",
   },
   {
     match: ["project", "built", "portfolio", "work you"],
-    reply: "A few recent builds: a donor management platform for a nonprofit, a QR attendance system with JWT auth, a payment verification app on the MERN stack, and a real-time task management tool. Scroll up to the log for the full list.",
+    reply: "A few recent builds: ValueAuto — an AI-powered car price prediction system using Gin and Python with a Random Forest ML model; a donor management platform for a nonprofit; a QR attendance system with JWT auth; a payment verification app on the MERN stack; and a real-time task management tool. Scroll up to the log for the full list.",
   },
   {
     match: ["experience", "background", "career", "job"],
@@ -122,6 +126,10 @@ export const TOPICS = [
   {
     match: ["tool", "git", "database", "deploy"],
     reply: "Git and GitHub for version control, MySQL for most databases, and Vercel/Netlify for deployment. I also use LLM tooling regularly in my day-to-day workflow.",
+  },
+  {
+    match: ["valueauto", "car price", "machine learning", "ml", "random forest", "gin"],
+    reply: "ValueAuto is an AI-powered car price prediction system I built using Gin (Go) as the backend framework and Python with a Random Forest model for the ML prediction engine. It features a web-based interface for users to input vehicle details and get estimated market values.",
   },
   {
     match: ["hello", "hi", "hey"],
@@ -142,6 +150,8 @@ export const QUICK_QUESTIONS = [
   "Tell me about Jan Rey's projects",
   "What's Jan Rey's experience?",
   "How can I reach Jan Rey?",
+  "Tell me about ValueAuto",
+  "Does Jan Rey know machine learning?",
 ];
 
 /* ---------------- Chat component ---------------- */

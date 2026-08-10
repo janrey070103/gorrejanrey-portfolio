@@ -4,7 +4,7 @@ import { generateReply } from './gemini';
 import './index.css';
 
 import { SiGo, SiLaravel, SiPhp, SiFlask, SiPython, SiMongodb, SiExpress, SiReact, SiNodedotjs, SiFirebase, SiDotnet, SiGit, SiGithub, SiMysql, SiVercel, SiNetlify , SiClaude, SiCursor, SiGoogle , SiJsonwebtokens, SiTailwindcss } from 'react-icons/si';
-import { FaJava, FaCode, FaWindows, FaBrain, FaKey } from 'react-icons/fa';
+import { FaJava, FaCode, FaWindows, FaBrain, FaKey, FaTree } from 'react-icons/fa';
 import { TbBrandCSharp, TbLetterZ, TbBrandOpenai } from 'react-icons/tb';
 
 const getIconForSkill = (skill) => {
@@ -34,6 +34,9 @@ const getIconForSkill = (skill) => {
   if (s.includes('jwt')) return <SiJsonwebtokens className="skill-icon" />;
   if (s.includes('oauth')) return <FaKey className="skill-icon" />;
   if (s.includes('tailwind')) return <SiTailwindcss className="skill-icon" />;
+  if (s.includes('gin')) return <SiGo className="skill-icon" />;
+  if (s.includes('python')) return <SiPython className="skill-icon" />;
+  if (s.includes('random forest') || s.includes('ml')) return <FaTree className="skill-icon" />;
   if (s.includes('z.ai') || s.includes('glm')) return <TbLetterZ className="skill-icon" style={{fontSize: '1.3em'}} />;
   return null;
 };
