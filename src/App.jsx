@@ -71,7 +71,7 @@ function Chat({ isChatOpen, setIsChatOpen }) {
     
     // Check if it's an FAQ
     const faqAnswers = {
-      "What are Jan Rey's skills?": "He is currently a Golang developer! He also works across full-stack development with Laravel + PHP, the MERN stack, and Flask/Python, plus mobile with React Native and Firebase. On desktop he builds with C# and .NET.",
+      "What are Jan Rey's skills?": "He is currently a Golang developer! He also works across full-stack development with Laravel + PHP, the MERN stack, and Flask/Python, plus mobile with React Native and Firebase. On desktop he builds with C# and .NET. He also has hands-on experience with Machine Learning (Python, Random Forest) and backend web development using Gin.",
       "Tell me about Jan Rey's projects": "He has built several impressive systems, including G-estudio (a modern web app), Virsprout (a PHP/MySQL donor management system), JBLCF QR-Based Attendance (React/Go), and Edu-Pay Verify (MERN stack). Scroll up to the Projects section to see the full list with screenshots! He is also currently building a web app using React + Gin (Golang) and Random Forest for forecast predictive analytics machine learning.",
       "What's Jan Rey's experience?": "He has been freelancing as a full-stack developer since 2025, building sites and software for students and small businesses. He also completed a 486-hour IT on-the-job training program in hardware diagnostics and technical support.",
       "How can I reach Jan Rey?": "You can reach him via email at gorrejanrey@gmail.com, or use the Contact Form at the bottom of the page!"

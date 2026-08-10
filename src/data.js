@@ -150,8 +150,6 @@ export const QUICK_QUESTIONS = [
   "Tell me about Jan Rey's projects",
   "What's Jan Rey's experience?",
   "How can I reach Jan Rey?",
-  "Tell me about ValueAuto",
-  "Does Jan Rey know machine learning?",
 ];
 
 /* ---------------- Chat component ---------------- */
