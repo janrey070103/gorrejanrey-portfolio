@@ -411,7 +411,7 @@ function App() {
             <div className="contact-card">
               <div className="k">HIRE ME</div>
               <div className="v">
-                <a href="RESUME-JAN_REY_GORRE.pdf" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                <a href="JAN_REY_GORRE.pdf" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
                   View Resume (PDF)
                 </a>
               </div>
